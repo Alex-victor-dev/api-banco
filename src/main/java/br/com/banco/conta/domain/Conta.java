@@ -1,4 +1,4 @@
-package br.com.banco.domain.conta;
+package br.com.banco.conta.domain;
 
 import java.util.UUID;
 
