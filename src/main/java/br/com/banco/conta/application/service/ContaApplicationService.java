@@ -1,5 +1,7 @@
 package br.com.banco.conta.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.banco.conta.application.api.ContaRequest;
@@ -22,7 +24,15 @@ public class ContaApplicationService implements ContaService {
 		log.info("[contaRequest] {}", contaRequest);
 		Conta conta = contaRepository.salvaConta(new Conta(contaRequest));
 		log.info("[finaliza] ContaApplicationService - salvaConta");
-		return ContaResponse.builder().idConta(conta.getIdConta()).build();
+		return new ContaResponse(conta);
+	}
+
+	@Override
+	public List<ContaResponse> buscaContas() {
+		log.info("[inicia] ContaApplicationService - buscaContas");
+		List<Conta> conta = contaRepository.buscaContas();
+		log.info("[finaliza] ContaApplicationService - buscaContas");
+		return ContaResponse.converte(conta);
 	}
 
 }

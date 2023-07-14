@@ -1,5 +1,7 @@
 package br.com.banco.conta.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.banco.conta.application.service.ContaService;
@@ -19,6 +21,14 @@ public class ContaController implements ContaAPI {
 		ContaResponse conta = contaService.salvaConta(contaRequest);
 		log.info("[finaliza] ContaController - criaConta");
 		return conta;
+	}
+
+	@Override
+	public List<ContaResponse> buscaContas() {
+		log.info("[inicia] ContaController - buscaContas");
+		List<ContaResponse> contaResponse = contaService.buscaContas();
+		log.info("[finaliza] ContaController - buscaContas");
+		return contaResponse;
 	}
 
 }

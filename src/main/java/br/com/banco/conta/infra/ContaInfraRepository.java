@@ -1,5 +1,7 @@
 package br.com.banco.conta.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.banco.conta.application.repository.ContaRepository;
@@ -15,6 +17,12 @@ public class ContaInfraRepository implements ContaRepository {
 	@Override
 	public Conta salvaConta(Conta conta) {
 		contaInfraJpaRepository.save(conta);
+		return conta;
+	}
+
+	@Override
+	public List<Conta> buscaContas() {
+		List<Conta> conta = contaInfraJpaRepository.findAll();
 		return conta;
 	}
 
