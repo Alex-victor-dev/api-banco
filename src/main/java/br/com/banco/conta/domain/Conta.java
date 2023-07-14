@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,25 +27,15 @@ public class Conta {
 	@NotNull
 	@Column(name = "nome_responsavel")
 	private String nomeResponsavel;
-	@Column(name = "saldo_conta")
-	private String saldoConta;
-
-	@NotNull
-	@Column(name = "data_criacao", nullable = false)
+	private Double saldoConta;
 	private LocalDate dataCriacao;
-
-	@NotNull
-	@Column(name = "tipo_conta", nullable = false)
-	@Enumerated(EnumType.STRING)
-	private TipoConta tipoConta;
 
 //	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //	private List<Transferencia> transferencias;
 
 	public Conta(ContaRequest contaRequest) {
 		this.nomeResponsavel = contaRequest.getNomeResponsavel();
-		this.saldoConta = contaRequest.getSaldoConta();
-		this.tipoConta = contaRequest.getTipoConta();
+		this.saldoConta = 100.0;
 		this.dataCriacao = LocalDate.now();
 	}
 
