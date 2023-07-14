@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("v1/conta")
+@RequestMapping("/v1/conta")
 public interface ContaAPI {
 
 	@ResponseStatus(code = HttpStatus.CREATED)
